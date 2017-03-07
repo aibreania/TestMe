@@ -1,0 +1,6 @@
+text green: #30604b
+title green: #39a375
+hover-link green: #67efb5
+button green: #56a080
+grey: #7f8482
+icon green: #00d6c6

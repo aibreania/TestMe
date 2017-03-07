@@ -1,0 +1,32 @@
+#grade-container {
+    margin-top: 50px;
+    width: 100%;
+    background-color: rgb(250, 250, 250);
+    border-bottom: 1px solid lightgrey;
+}
+
+#grade-content {
+    height: 500px;
+    padding-left: 35%;
+}
+
+
+#grade-content p {
+    font-size: 17px;
+}
+
+#grade-content p:first-child {
+    padding-top: 70px;
+}
+
+#grade-content button {
+    background-color: #56a080;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+#grade-content button a:hover {
+    color: white;
+}

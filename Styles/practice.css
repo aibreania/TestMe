@@ -1,0 +1,17 @@
+#prac-container {
+    margin-top: 50px;
+    background-color: rgb(250, 250, 250);
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+}
+
+#prac-content {
+    width: 94%;
+    margin: 50px auto;
+    height: 400px;
+}
+
+#prac-content form {
+    padding-top: 100px;
+    padding-left: 30%;
+}

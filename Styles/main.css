@@ -1,0 +1,139 @@
+body {
+    font-family: sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #67efb5;
+}
+
+/******header******/
+#header {
+    z-index: 1024;
+    height: 50px;
+    width: 100%;
+    background: white;
+    position: fixed;
+    top: 0;
+    border-bottom: 1px solid lightgrey;
+}
+
+#header ul {
+    list-style: none;
+    margin-left: 800px;
+}
+
+#header li {
+    display: inline-block;
+    font-weight: 300;
+    font-size: 16px;
+    margin-left: 50px;
+    color: #30604b;
+}
+
+#header td:first-child {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#header img {
+    width: 40px;
+    margin-left: 60px;
+    padding: 0;
+}
+
+#header p {
+    color: #30604b;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 0;
+}
+
+#header button {
+    outline: none;
+    background-color: #56a080;
+    border: 1px solid #56a080;
+    border-radius: 3px;
+    padding: 3px 10px;
+    font-size: 13px;
+    color: white;
+}
+
+#header button a:hover {
+    color: white;
+}
+/******container******/
+#container {
+    padding-top: 0;
+    width: 100%;
+}
+
+#content {
+    background: url("../pics/bg3.jpg") no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 740px;
+}
+#content h1 {
+    padding-top: 220px;
+    padding-left: 40%;
+    color: white;
+}
+
+#content h2 {
+    padding-left: 36%;
+    color: white;
+}
+
+#content button {
+    background-color: white;
+    color: #30604b;
+    border: 1px solid white;
+    border-radius: 5px;
+    outline: none;
+    margin-left: 40%;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 5px 45px;
+}
+
+#content button:hover {
+    border: 1px solid grey;
+}
+
+#instructions ul {
+    list-style: none;
+    margin-top: -10px;
+    padding-top: 30px;
+    background-color: #56a080;
+    height: 300px;
+}
+
+/******footer******/
+#footer {
+    color: #7f8482;
+}
+
+#footer ul {
+    list-style: none;
+    margin-left: 75%;
+}
+
+#footer li {
+    display: inline-block;
+    padding-left: 30px;
+    font-weight: 300;
+}
+
+#footer p {
+    text-align: center;
+    font-weight: 300;
+}

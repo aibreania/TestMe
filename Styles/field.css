@@ -1,0 +1,57 @@
+#field-container {
+    margin-top: 50px;
+    width: 100%;
+    background-color: rgb(250, 250, 250);
+    border-bottom: 1px solid lightgrey;
+}
+
+#field-board {
+    height: 800px;
+    width: 94%;
+    margin: 0 auto;
+}
+
+.tab {
+    background-color: darkgray;
+    height: 300px;
+    width: 31%;
+    margin-top: 40px;
+    margin-right: 3.5%;
+    float: left;
+    opacity: 0.5;
+}
+
+.right {
+    margin-right: 0;
+}
+
+.tab:hover {
+    opacity: 1;
+}
+
+.tab-content {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.tab-content h1 {
+    color: #0e8e56;
+    font-size: 50px;
+    margin-top: 25%;
+    margin-left: 20px;
+}
+
+.tab-content a {
+    opacity: 0;
+}
+
+.tab-content a:hover {
+    opacity: 1;
+}
+
+.tab-content p {
+    display: none;
+}
+.progress {
+    display: none;
+}
