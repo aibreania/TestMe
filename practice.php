@@ -17,16 +17,16 @@ session_start();
 
     $conn = new mysqli('localhost', 'testmeuser136', 'ECo5!sZpRF@^', 'testme1369');
     if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+        die("Connection failed: " . $conn->connect_error);
     }
 
     $sql_chap = "SELECT Id, chapterName FROM Chapter WHERE chapterName = '$chap'";
     $result_chap = $conn->query($sql_chap);
     if (!$result_chap === TRUE) {
-    echo "Error: " . $sql_chap . "<br>" . $conn->error;
+        echo "Error: " . $sql_chap . "<br>" . $conn->error;
     }
     if ($result_chap->num_rows <= 0) {
-    echo "<script> window.location.assign('field.php'); </script>";
+        echo "<script> window.location.assign('field.php'); </script>";
     }
     $row_chap = $result_chap->fetch_assoc();
     $chap_id = $row_chap['Id'];
@@ -34,10 +34,10 @@ session_start();
     $sql_prac = "SELECT description, choices, other FROM Question WHERE chapId = '$chap_id'";
     $result_prac = $conn->query($sql_prac);
     if (!$result_prac === TRUE) {
-    echo "Error: " . $sql_prac . "<br>" . $conn->error;
+        echo "Error: " . $sql_prac . "<br>" . $conn->error;
     }
     if ($result_prac->num_rows <= 0) {
-    echo "<script> window.location.assign('field.php'); </script>";
+        echo "<script> window.location.assign('field.php'); </script>";
     }
 
     $row_prac = '';
@@ -46,20 +46,20 @@ session_start();
     $others = array();
     $rights = array();
     while($row_prac = $result_prac->fetch_assoc()) {
-    array_push($questions, $row_prac['description']);
-    array_push($choices, $row_prac['choices']);
-    array_push($others, $row_prac['other']);
+        array_push($questions, $row_prac['description']);
+        array_push($choices, $row_prac['choices']);
+        array_push($others, $row_prac['other']);
     }
 
     $conn->close();
 
     for($i = 0; $i < sizeof($choices); $i++) {
-    $choice = $choices[$i];
-    $choice = explode(";", $choice);
-    $right = $choice[0];
-    array_push($rights, $right);
-    shuffle($choice);
-    $choices[$i] = $choice;
+        $choice = $choices[$i];
+        $choice = explode(";", $choice);
+        $right = $choice[0];
+        array_push($rights, $right);
+        shuffle($choice);
+        $choices[$i] = $choice;
     }
 
     $used = array();
@@ -76,11 +76,10 @@ session_start();
         var others = JSON.parse('<?= $others_json; ?>');
         var rights = JSON.parse('<?= $rights_json; ?>');
         var used = [];
-        var choice, right,total = 0;
+        var choice, right,total;
         //for(var i = 0; i < questions.length; i++) console.log(questions[i]);
 
         function nextQuestionNo() {
-            if(used.length == questions.length) return -1;
             var r = Math.floor(Math.random()*questions.length);
             while(used.indexOf(r) != -1) r = Math.floor(Math.random()*questions.length);
             used.push(r);
@@ -94,22 +93,20 @@ session_start();
             }
 
             var form = document.getElementById("form");
-            var n = nextQuestionNo();
 
             while (form.hasChildNodes()) {
                 var child = form.lastChild;
                 if(child.checked && child.value == right) {
                     total++;
                 }
-                if(n == -1) {
-                    sessionStorage.setItem('total', total);
-                    sessionStorage.setItem('len', used.length);
-                    window.location.assign('grade.php');
-                    return;
-                }
                 form.removeChild(child);
             }
 
+            if(used.length == questions.length) {
+                console.log(total);
+            }
+
+            var n = nextQuestionNo();
             choice = choices[n];
             right = rights[n];
             document.getElementById("question").innerHTML =  used.length + "." + questions[n];
@@ -146,7 +143,7 @@ session_start();
 </div>
 <div id="prac-container">
     <div id="prac-content">
-        <p id="question">Your answers are complete.</p>
+        <p id="question"></p>
         <div id="form"></div>
         <button onClick='newQuestion()' id='button'>Next Question</button>
     </div>
