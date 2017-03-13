@@ -13,7 +13,7 @@
 #dash-nav {
     width: 15%;
     height: 100%;
-    background-color: lightgrey;
+    background-color: #56a080;
     position: fixed;
     float: left;
     z-index: 1024;
@@ -21,11 +21,23 @@
 
 #dash-nav ul {
     list-style: none;
-    margin-top: 50px;
+    margin-top: 80px;
+    padding-left: 30px;
 }
 
 #dash-nav li {
     margin-bottom: 20px;
+}
+
+.side-link {
+    width: 100px;
+    color: white;
+    font-weight: 300;
+}
+
+.side-link img {
+    width: 23px;
+    padding-right: 3px;
 }
 
 
@@ -35,8 +47,54 @@
     height: 100%;
 }
 
+#dash-screen p {
+    padding-top: 62px;
+    padding-left: 350px;
+    font-size: 23px;
+    font-weight: 800;
+    color: #39a375;
+}
+
 #dash-screen img {
     height: 300px;
     margin-left: 20%;
     margin-top: 50px;
+}
+
+#dash-circles {
+    margin-top: 0;
+    margin-left: 350px;
+}
+
+#dash-screen ul {
+    margin-top: 0;
+    margin-left: 348px;
+    list-style: none;
+}
+
+#dash-screen li {
+    display: inline-block;
+    font-size: 18px;
+    color: #39a375;
+    font-weight: 300;
+}
+
+#dash-screen li:first-child {
+    padding-right: 102px;
+}
+
+#dash-screen li:nth-child(2) {
+    padding-right: 89px;
+}
+
+#dash-screen li:nth-child(3) {
+    padding-right: 63px;
+}
+
+#dash-screen li:nth-child(4) {
+    padding-right: 70px;
+}
+
+#dash-screen li:nth-child(5) {
+    padding-right: 85px;
 }

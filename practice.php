@@ -9,6 +9,12 @@ session_start();
     <link rel="icon" type="image/x-icon" href="pics/favicon.ico" />
     <link rel="stylesheet" href="Styles/main.css" />
     <link rel="stylesheet" href="Styles/practice.css" />
+    <style>
+        #myform {
+            display: hidden;
+        }
+    </style>
+
     <?php
     $chap = $chap_id = '';
 
@@ -71,15 +77,20 @@ session_start();
 
     ?>
     <script>
+        var UserId = sessionStorage.getItem('UserId');
+        var Username = sessionStorage.getItem('Username');
+
         var questions = JSON.parse('<?= $questions_json; ?>');
         var choices = JSON.parse('<?= $choices_json; ?>');
         var others = JSON.parse('<?= $others_json; ?>');
         var rights = JSON.parse('<?= $rights_json; ?>');
+        var chap_id = "<?php echo $chap_id; ?>";
         var used = [];
-        var choice, right,total;
+        var choice, right,total = 0;
         //for(var i = 0; i < questions.length; i++) console.log(questions[i]);
 
         function nextQuestionNo() {
+            if(used.length == questions.length) return -1;
             var r = Math.floor(Math.random()*questions.length);
             while(used.indexOf(r) != -1) r = Math.floor(Math.random()*questions.length);
             used.push(r);
@@ -93,20 +104,25 @@ session_start();
             }
 
             var form = document.getElementById("form");
+            var n = nextQuestionNo();
 
             while (form.hasChildNodes()) {
                 var child = form.lastChild;
                 if(child.checked && child.value == right) {
                     total++;
                 }
+                if(n == -1) {
+                    document.getElementById("total").value = total;
+                    document.getElementById("len").value = used.length;
+                    document.getElementById("chapId").value = chap_id;
+                    document.getElementById("UserId").value = UserId;
+                    document.myform.submit();
+                    //window.location.assign('grade.php');
+                    return;
+                }
                 form.removeChild(child);
             }
 
-            if(used.length == questions.length) {
-                console.log(total);
-            }
-
-            var n = nextQuestionNo();
             choice = choices[n];
             right = rights[n];
             document.getElementById("question").innerHTML =  used.length + "." + questions[n];
@@ -133,7 +149,7 @@ session_start();
             <td><a href="index.php"><p>TestMe</p></a></td>
             <td>
                 <ul>
-                    <li><a href="dash.php">Dashboard</a></li>
+                    <li><a href="forum.php">Forum</a></li>
                     <li><a href="faq.php">FAQ</a></li>
                     <li><button><a href="login.php">Log In</a></button></li>
                 </ul>
@@ -143,7 +159,7 @@ session_start();
 </div>
 <div id="prac-container">
     <div id="prac-content">
-        <p id="question"></p>
+        <p id="question">Your answers are complete.</p>
         <div id="form"></div>
         <button onClick='newQuestion()' id='button'>Next Question</button>
     </div>
@@ -155,5 +171,18 @@ session_start();
     </ul>
     <p>All rights reserved. @2017</p>
 </div>
+<form name="myform" method="post" action="grade.php">
+    <input type="text" name = "total" id="total">
+    <input type="text" name = "len" id="len">
+    <input type="text" name = "chapId" id="chapId">
+    <input type="text" name = "UserId" id="UserId">
+</form>
+
+<script>
+    if(UserId == null || Username == null) window.location.assign('login.php');
+    var loginLink = document.getElementById("loginLink");
+    loginLink.innerHTML = Username;
+    loginLink.href = "dash.php";
+</script>
 </BODY>
 </HTML>

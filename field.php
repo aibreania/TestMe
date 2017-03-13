@@ -10,7 +10,6 @@ session_start();
     <link rel="icon" type="image/x-icon" href="pics/favicon.ico" />
     <link rel="stylesheet" href="Styles/main.css" />
     <link rel="stylesheet" href="Styles/field.css" />
-    <script type="text/javascript" src="JS/field.js"></script>
 </HEAD>
 
 <BODY onload="loadFunction()">
@@ -21,7 +20,7 @@ session_start();
             <td><a href="index.php"><p>TestMe</p></a></td>
             <td>
                 <ul>
-                    <li><a href="dash.php">Dashboard</a></li>
+                    <li><a href="forum.php">Forum</a></li>
                     <li><a href="faq.php">FAQ</a></li>
                     <li><button><a href="login.php">Log In</a></button></li>
                 </ul>
@@ -100,5 +99,28 @@ session_start();
     </ul>
     <p>All rights reserved. @2017</p>
 </div>
+<script>
+    function showDetail(tab) {
+        tab.querySelector('.tab-detail').style.opacity = "1";
+    }
+
+    function hideDetail(tab) {
+        tab.querySelector('.tab-detail').style.opacity = "0";
+    }
+
+    function loadFunction() {
+        var barArray = document.getElementsByClassName("bar");
+        for(var i = 0; i < barArray.length; i+=1) {
+            var percent = barArray[i].innerHTML;
+            barArray[i].style.width = percent;
+        }
+    }
+    var UserId = sessionStorage.getItem('UserId');
+    var Username = sessionStorage.getItem('Username');
+    if(UserId == null || Username == null) window.location.assign('login.php');
+    var loginLink = document.getElementById("loginLink");
+    loginLink.innerHTML = Username;
+    loginLink.href = "dash.php";
+</script>
 </BODY>
 </HTML>

@@ -5,19 +5,20 @@
     <link rel="icon" type="image/x-icon" href="pics/favicon.ico" />
     <link rel="stylesheet" href="Styles/main.css" />
     <link rel="stylesheet" href="Styles/dash.css" />
+    <link rel="stylesheet" href="Styles/circle.css" />
 </HEAD>
 
 <BODY>
 <div id="header">
     <table>
         <tr>
-            <td><a href="index.html"><img src="pics/favicon.ico"></a></td>
-            <td><a href="index.html"><p>TestMe</p></a></td>
+            <td><a href="index.php"><img src="pics/favicon.ico"></a></td>
+            <td><a href="index.php"><p>TestMe</p></a></td>
             <td>
                 <ul>
-                    <li><a href="dash.html">Dashboard</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><button><a href="login.html">Log In</a></button></li>
+                    <li><a href="dash.php">Dashboard</a></li>
+                    <li><a href="faq.php">FAQ</a></li>
+                    <li><button><a href="login.php">Log In</a></button></li>
                 </ul>
             </td>
         </tr>
@@ -26,24 +27,77 @@
 <div id="dash-container">
     <div id="dash-nav">
         <ul>
-            <!-- use ajax to refresh the dashboard -->
-            <li><a><img src="">User Settings</a></li>
-            <li><a><img src="">Past Tests</a></li>
-            <li><a><img src="">Past Grades</a></li>
-            <li><a><img src="">Career Analysis</a></li>
-            <li><a href="index.html"><img src="">Log Out</a></li>
+            <li><a href="" onclick = "settings()" class="side-link"><table><tr><td><img src="https://s3-us-west-2.amazonaws.com/react-dashboard-images/Settings.png"></td><td>User Settings</td></tr></table></a></li>
+            <li><a href="" onclick = "settings()" class="side-link"><table><tr><td><img src="https://s3-us-west-2.amazonaws.com/react-dashboard-images/Card.png"></td><td>Past Tests</td></tr></table></a></li>
+            <li><a href="" onclick = "settings()" class="side-link"><table><tr><td><img src="https://s3-us-west-2.amazonaws.com/react-dashboard-images/Charts.png"></td><td>Past Grades</td></tr></table></a></li>
+            <li><a href="" onclick = "settings()" class="side-link"><table><tr><td><img src="https://s3-us-west-2.amazonaws.com/react-dashboard-images/User.png"></td><td>Career Analysis</td></tr></table></a></li>
+            <li><a href="index.php" class="side-link" onclick="logout()"><table><tr><td><img src="https://s3-us-west-2.amazonaws.com/react-dashboard-images/Login+Page.png"></td><td>Log Out</td></tr></table></a></li>
         </ul>
     </div>
     <div id="dash-screen">
-        <!-- d3.js -->
-        <img src="http://tinyurl.com/hy5zucs">
-        <img src="http://tinyurl.com/hy5zucs">
+        <p>Progress So Far....</p>
+        <div id="dash-circles">
+            <div class="c100 p30">
+                <span>30%</span>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+
+            <div class="c100 p60 green">
+                <span>60%</span>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+
+            <div class="c100 p0 orange">
+                <span>0%</span>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+            <div class="c100 p20 red">
+                <span>20%</span>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+
+            <div class="c100 p50 yellow">
+                <span>50%</span>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+
+            <div class="c100 p99 purple">
+                <span>99%</span>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+        </div>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>AngularJS</li>
+            <li>ReactJS</li>
+            <li>jQuery</li>
+        </ul>
     </div>
 </div>
 <div id="footer">
     <ul>
-        <li><a href="#">Website Info</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="info.php">Website Info</a></li>
+        <li><a href="contact.php">Contact Us</a></li>
     </ul>
     <p>All rights reserved. @2017</p>
 </div>

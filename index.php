@@ -14,7 +14,7 @@
             <td><a href="index.php"><p>TestMe</p></a></td>
             <td>
                 <ul>
-                    <li><a href="dash.php">Dashboard</a></li>
+                    <li><a href="forum.php">Forum</a></li>
                     <li><a href="faq.php">FAQ</a></li>
                     <li><button><a href="login.php">Log In</a></button></li>
                 </ul>

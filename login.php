@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="Styles/main.css" />
     <link rel="stylesheet" href="Styles/login.css" />
     <?php
-    $flag_name = $flag_pw = $flag_login = 0;
+    $flag_name = $flag_pw = $flag_login = $User_Id = 0;
     $name = $pw = '';
     if(isset($_POST['submit'])) {
         if (isset($_POST['username'])) {
@@ -30,7 +30,7 @@
         }
 
 
-        $sql = "SELECT Username, Hashedpw FROM User where Username = '$name'";
+        $sql = "SELECT Id, Username, Hashedpw FROM User where Username = '$name'";
         $result = $conn->query($sql);
 
         if (!$result === TRUE) {
@@ -40,7 +40,12 @@
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $pw2 = $row['Hashedpw'];
-            if(crypt($pw, $pw2) == $pw2) echo "<script> window.location.assign('field.php'); </script>";
+            $User_Id = $row['Id'];
+            if(crypt($pw, $pw2) == $pw2) {
+                echo "<script> sessionStorage.setItem('Username', '$name'); </script>";
+                echo "<script> sessionStorage.setItem('UserId', $User_Id); </script>";
+                echo "<script> window.location.assign('field.php'); </script>";
+            }
             else $flag_login = 2;
         } else {
             $flag_login = 2;
@@ -63,7 +68,7 @@
             <td><a href="index.php"><p>TestMe</p></a></td>
             <td>
                 <ul>
-                    <li><a href="dash.php">Dashboard</a></li>
+                    <li><a href="forum.php">Forum</a></li>
                     <li><a href="faq.php">FAQ</a></li>
                     <li><button><a href="login.php">Log In</a></button></li>
                 </ul>

@@ -60,7 +60,7 @@
             if (!$conn->query($sql) === TRUE) {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
-            echo "<script> window.location.assign('field.php'); </script>";
+            echo "<script> window.location.assign('login.php'); </script>";
         } else {
             if($result_username->num_rows > 0)
                 $flag_name = 3;
@@ -68,7 +68,6 @@
                 $flag_email = 3;
         }
 
-        echo "<p>hello</p>";
 
         $conn->close();
     }
@@ -92,7 +91,7 @@
             <td><a href="index.php"><p>TestMe</p></a></td>
             <td>
                 <ul>
-                    <li><a href="dash.php">Dashboard</a></li>
+                    <li><a href="forum.php">Forum</a></li>
                     <li><a href="faq.php">FAQ</a></li>
                     <li><button><a href="login.php">Log In</a></button></li>
                 </ul>
