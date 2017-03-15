@@ -17,7 +17,7 @@
                 <ul>
                     <li><a href="forum.php">Forum</a></li>
                     <li><a href="faq.php">FAQ</a></li>
-                    <li><button><a href="login.php">Log In</a></button></li>
+                    <li><button><a href="login.php" id="loginLink">Log In</a></button></li>
                 </ul>
             </td>
         </tr>
@@ -35,5 +35,14 @@
     </ul>
     <p>All rights reserved. @2017</p>
 </div>
+<script>
+    var UserId = sessionStorage.getItem('UserId');
+    var Username = sessionStorage.getItem('Username');
+    if(UserId != null && Username != null) {
+    	    var loginLink = document.getElementById("loginLink");
+	    loginLink.innerHTML = Username;
+	    loginLink.href = "dash.php";
+    }
+</script>
 </BODY>
 </HTML>

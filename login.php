@@ -44,7 +44,7 @@
             if(crypt($pw, $pw2) == $pw2) {
                 echo "<script> sessionStorage.setItem('Username', '$name'); </script>";
                 echo "<script> sessionStorage.setItem('UserId', $User_Id); </script>";
-                echo "<script> window.location.assign('field.php'); </script>";
+            	echo "<script> window.location.assign('field.php'); </script>";
             }
             else $flag_login = 2;
         } else {
@@ -88,7 +88,7 @@
             <input type="submit" value="Log In" name="submit" id="submit">
             <?php if($flag_login == 2) echo "* wrong username or password"; ?><br>
         </form>
-        <a href="signup.php">Click here to get an new free account!</a>
+        <a href="signup.php">Click here to get a new free account!</a>
     </div>
 </div>
 <div id="footer">

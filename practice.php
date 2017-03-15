@@ -10,11 +10,12 @@ session_start();
     <link rel="stylesheet" href="Styles/main.css" />
     <link rel="stylesheet" href="Styles/practice.css" />
     <style>
-        #myform {
-            display: hidden;
-        }
+    	#myform {
+    		opacity: 0;
+    		display: hidden;
+    	}
     </style>
-
+    
     <?php
     $chap = $chap_id = '';
 
@@ -78,15 +79,15 @@ session_start();
     ?>
     <script>
         var UserId = sessionStorage.getItem('UserId');
-        var Username = sessionStorage.getItem('Username');
-
+	var Username = sessionStorage.getItem('Username');
+	
         var questions = JSON.parse('<?= $questions_json; ?>');
         var choices = JSON.parse('<?= $choices_json; ?>');
         var others = JSON.parse('<?= $others_json; ?>');
         var rights = JSON.parse('<?= $rights_json; ?>');
         var chap_id = "<?php echo $chap_id; ?>";
         var used = [];
-        var choice, right,total = 0;
+	var choice, right,total = 0;
         //for(var i = 0; i < questions.length; i++) console.log(questions[i]);
 
         function nextQuestionNo() {
@@ -99,35 +100,35 @@ session_start();
 
         function newQuestion(){
             if(used.length == questions.length-1) {
-                var button = document.getElementById("button");
-                button.innerHTML = "Check Grade";
+            	var button = document.getElementById("button");
+            	button.innerHTML = "Check Grade";	
             }
-
+            
             var form = document.getElementById("form");
             var n = nextQuestionNo();
-
+            
             while (form.hasChildNodes()) {
                 var child = form.lastChild;
                 if(child.checked && child.value == right) {
-                    total++;
+                	total++;
                 }
                 if(n == -1) {
-                    document.getElementById("total").value = total;
-                    document.getElementById("len").value = used.length;
-                    document.getElementById("chapId").value = chap_id;
+		    document.getElementById("total").value = total;
+	            document.getElementById("len").value = used.length;
+	            document.getElementById("chapId").value = chap_id;
                     document.getElementById("UserId").value = UserId;
-                    document.myform.submit();
-                    //window.location.assign('grade.php');
-                    return;
-                }
-                form.removeChild(child);
+		    document.myform.submit();
+	            //window.location.assign('grade.php');
+	            return;
+	        }
+            	form.removeChild(child);
             }
-
+            
             choice = choices[n];
             right = rights[n];
             document.getElementById("question").innerHTML =  used.length + "." + questions[n];
-
-            for(var i = 0; i < choice.length; i++) {
+  
+	    for(var i = 0; i < choice.length; i++) {
                 var input = document.createElement("INPUT");
                 input.type = "radio";
                 input.value = choice[i];
@@ -151,7 +152,7 @@ session_start();
                 <ul>
                     <li><a href="forum.php">Forum</a></li>
                     <li><a href="faq.php">FAQ</a></li>
-                    <li><button><a href="login.php">Log In</a></button></li>
+                    <li><button><a href="login.php" id="loginLink">Log In</a></button></li>
                 </ul>
             </td>
         </tr>
@@ -172,17 +173,19 @@ session_start();
     <p>All rights reserved. @2017</p>
 </div>
 <form name="myform" method="post" action="grade.php">
-    <input type="text" name = "total" id="total">
-    <input type="text" name = "len" id="len">
-    <input type="text" name = "chapId" id="chapId">
-    <input type="text" name = "UserId" id="UserId">
+   <input type="hidden" name = "total" id="total">
+   <input type="hidden" name = "len" id="len">
+   <input type="hidden" name = "chapId" id="chapId">
+   <input type="hidden" name = "UserId" id="UserId">
 </form>
 
 <script>
-    if(UserId == null || Username == null) window.location.assign('login.php');
-    var loginLink = document.getElementById("loginLink");
-    loginLink.innerHTML = Username;
-    loginLink.href = "dash.php";
+	var UserId = sessionStorage.getItem('UserId');
+	var Username = sessionStorage.getItem('Username');
+	if(UserId == null || Username == null) window.location.assign('login.php');
+	var loginLink = document.getElementById("loginLink");
+	loginLink.innerHTML = Username;
+	loginLink.href = "dash.php";
 </script>
 </BODY>
 </HTML>

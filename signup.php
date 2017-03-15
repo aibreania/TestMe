@@ -68,6 +68,7 @@
                 $flag_email = 3;
         }
 
+        echo "<p>hello</p>";
 
         $conn->close();
     }

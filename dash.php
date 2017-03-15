@@ -18,7 +18,7 @@
                 <ul>
                     <li><a href="forum.php">Forum</a></li>
                     <li><a href="faq.php">FAQ</a></li>
-                    <li><button><a href="login.php">Log In</a></button></li>
+                    <li><button><a href="login.php" id="loginLink">Log In</a></button></li>
                 </ul>
             </td>
         </tr>
@@ -27,6 +27,7 @@
 <div id="dash-container">
     <div id="dash-nav">
         <ul>
+            <li><a href="" onclick = "settings()" class="side-link"><table><tr><td><img src="https://s3-us-west-2.amazonaws.com/react-dashboard-images/Forms.png"></td><td>Progress</td></tr></table></a></li>
             <li><a href="" onclick = "settings()" class="side-link"><table><tr><td><img src="https://s3-us-west-2.amazonaws.com/react-dashboard-images/Settings.png"></td><td>User Settings</td></tr></table></a></li>
             <li><a href="" onclick = "settings()" class="side-link"><table><tr><td><img src="https://s3-us-west-2.amazonaws.com/react-dashboard-images/Card.png"></td><td>Past Tests</td></tr></table></a></li>
             <li><a href="" onclick = "settings()" class="side-link"><table><tr><td><img src="https://s3-us-west-2.amazonaws.com/react-dashboard-images/Charts.png"></td><td>Past Grades</td></tr></table></a></li>
@@ -102,17 +103,17 @@
     <p>All rights reserved. @2017</p>
 </div>
 <script>
-    var UserId = sessionStorage.getItem('UserId');
-    var Username = sessionStorage.getItem('Username');
-    if(UserId == null || Username == null) window.location.assign('login.php');
-    var loginLink = document.getElementById("loginLink");
-    loginLink.innerHTML = Username;
-    loginLink.href = "dash.php";
-
-    function logout(){
-        sessionStorage.clear();
-        window.location.assign('index.php');
-    }
+	var UserId = sessionStorage.getItem('UserId');
+	var Username = sessionStorage.getItem('Username');
+	if(UserId == null || Username == null) window.location.assign('login.php');
+	var loginLink = document.getElementById("loginLink");
+	loginLink.innerHTML = Username;
+	loginLink.href = "dash.php";
+	
+	function logout(){
+		sessionStorage.clear();
+		window.location.assign('index.php');
+	}
 </script>
 </BODY>
 </HTML>

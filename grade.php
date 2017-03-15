@@ -25,9 +25,9 @@
             echo "Error: " . "<br>" . $conn->error;
         }
 
-        $conn->close();
+       $conn->close();
     }
-    ?>
+?>
 </HEAD>
 
 <BODY>
@@ -40,7 +40,7 @@
                 <ul>
                     <li><a href="forum.php">Forum</a></li>
                     <li><a href="faq.php">FAQ</a></li>
-                    <li><button><a href="login.php">Log In</a></button></li>
+                    <li><button><a href="login.php" id="loginLink">Log In</a></button></li>
                 </ul>
             </td>
         </tr>
