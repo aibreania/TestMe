@@ -1,4 +1,8 @@
 <?php
+/*这是一个结合了PHP,JavaScript，HTML&CSS的PHP文件，
+这个文件实现的页面是用户在网页上做选择题，每选一个点下一题，后台就会自动算分，并异步Ajax显示下一道题。
+其中结合了MySQL数据读取、浏览器session属性存取数据、DOM操作等，是一个比较能显示前端综合能力的文件。
+*/
 session_save_path('/tmp');
 session_start();
 ?>
